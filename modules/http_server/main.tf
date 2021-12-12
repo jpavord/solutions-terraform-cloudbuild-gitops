@@ -19,7 +19,7 @@ locals {
 
 resource "google_compute_instance" "http_server" {
   project      = "${var.project}"
-  zone         = "us-central1-a"
+  zone         = "us-central1"
   name         = "${local.network}-apache2-instance"
   machine_type = "e2-micro"
 
@@ -27,7 +27,7 @@ resource "google_compute_instance" "http_server" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu/ubuntu-2004-lts"
+      image = "ubuntu-2004-focal-v20211202"
     }
   }
 
