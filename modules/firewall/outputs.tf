@@ -17,10 +17,3 @@ output "firewall_rule-http" {
   value = "${google_compute_firewall.allow-http.name}"
 }
 
-output "firewall_rule-https" {
-  value = "${google_compute_firewall.allow-https.name}"
-}
-
-output "firewall_rule-ssh" {
-  value = "${google_compute_firewall.allow-ssh.name}"
-}
