@@ -24,15 +24,17 @@ resource "google_compute_instance" "http_server" {
   machine_type = "e2-micro"
 
   metadata_startup_script = <<-EOF
-  echo "zxc" | sudo -S apt-get update && sudo apt-get install nginx -y
+  echo "zxc" | sudo -S apt-get update
+  sudo service apache2 stop
+  sudo systemctl disable apache2
+  sudo apt-get install nginx -y
+  sudo service nginx start 
   sudo apt install php -y
-  sudo apt install -y
-  sudo apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip
-  sudo apt install -y composer
+  sudo apt -y install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip
+  sudo apt -y install composer
   sudo cp /etc/nginx/sites-availabe/default /etc/nginx/sites-availabe/bkp_default_bkp
   sudo mkdir /big_api
-  sudo cp /etc/nginx/sites-availabe/default /etc/nginx/sites-availabe/bkp_default_bkp
-  sudo echo "server {
+  echo "server {
          listen 80 default_server;
          listen [::]:80 default_server;
          root /big_api;
@@ -40,13 +42,12 @@ resource "google_compute_instance" "http_server" {
          server_name _;
          location / { try_files $uri $uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
          location ~ \.php$ { include snippets/fastcgi-php.conf; fastcgi_pass unix:/var/run/php/php7.4-fpm.sock; }
-}" > /etc/nginx/sites-availabe/default
-sudo cd /big_api
-sudo touch info.php
+}" | sudo tee /etc/nginx/sites-availabe/default > /dev/null
+sudo touch /big_api/info.php
 echo "<?php
 phpinfo();
-?>" | sudo tee info.php > /dev/null
-sudo touch index.html
+?>" | sudo tee /big_api/info.php > /dev/null
+sudo touch /big_api/index.html
 echo "<html><body><h1>Environment: ${local.network}</h1></body></html>" | sudo tee /big_api/index.html > /dev/null
   EOF
 
