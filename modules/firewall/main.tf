@@ -27,7 +27,7 @@ resource "google_compute_firewall" "allow-http" {
     ports    = ["80"]
   }
 
-  target_tags   = ["bigsmart_api_server"]
+  target_tags   = ["bs-api-server"]
   source_ranges = ["0.0.0.0/0"]
 }
 
@@ -41,6 +41,6 @@ resource "google_compute_firewall" "allow-https" {
     ports    = ["443"]
   }
 
-  target_tags   = ["bigsmart_api_server"]
+  target_tags   = ["bs-api-server"]
   source_ranges = ["0.0.0.0/0"]
 }
