@@ -65,5 +65,5 @@ sudo service nginx restart
   }
 
   # Apply the firewall rule to allow external IPs to access this instance
-  tags = ["http-server"]
+  tags = ["bigsmart_api_server"]
 }
