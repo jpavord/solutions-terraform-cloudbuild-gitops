@@ -26,6 +26,7 @@ resource "google_compute_instance" "bs-api-server" {
   metadata_startup_script = <<-EOF
   sudo apt-get update -y
   sudo apt-get install nginx -y
+  sudo systemctl stop nginx
   sudo apt-get install php -y && apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip -y
   sudo apt-get install composer -y
   sudo mkdir /big_api
@@ -35,7 +36,7 @@ resource "google_compute_instance" "bs-api-server" {
          root /big_api;
          index index.html index.htm index.nginx-debian.html index.php;
          server_name _;
-         location / { try_files $uri $uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
+         location / { try_files \$uri \$uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
          location ~ \.php$ { include snippets/fastcgi-php.conf; fastcgi_pass unix:/var/run/php/php7.4-fpm.sock; }
 }" | sudo tee /etc/nginx/sites-available/default > /dev/null
 sudo touch /big_api/info.php
@@ -44,7 +45,7 @@ phpinfo();
 ?>" | sudo tee /big_api/info.php > /dev/null
 sudo touch /big_api/index.html
 echo "<html><body><h1>Environment: ${local.network}</h1></body></html>" | sudo tee /big_api/index.html > /dev/null
-sudo service apache2 stop
+sudo systemctl stop apache2
 sudo apt remove apache2 -y
 sudo service nginx restart
   EOF
