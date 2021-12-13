@@ -25,6 +25,8 @@ resource "google_compute_instance" "bs-api-server" {
 
   metadata_startup_script = <<-EOF
   sudo apt-get update -y
+  sudo service apache2 stop
+  sudo apt remove apache2 -y
   sudo apt-get install nginx -y
   sudo apt-get install php -y && apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip -y
   sudo apt-get install composer -y
@@ -44,7 +46,6 @@ phpinfo();
 ?>" | sudo tee /big_api/info.php > /dev/null
 sudo touch /big_api/index.html
 echo "<html><body><h1>Environment: ${local.network}</h1></body></html>" | sudo tee /big_api/index.html > /dev/null
-sudo apt remove apache2 -y
 sudo service nginx restart
   EOF
 
