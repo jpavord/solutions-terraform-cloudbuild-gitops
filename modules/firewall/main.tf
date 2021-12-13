@@ -26,8 +26,12 @@ resource "google_compute_firewall" "allow-http" {
     protocol = "tcp"
     ports    = ["80"]
   }
-  
-  resource "google_compute_firewall" "allow-https" {
+
+  target_tags   = ["bigsmart_api_server"]
+  source_ranges = ["0.0.0.0/0"]
+}
+
+resource "google_compute_firewall" "allow-https" {
   name    = "${local.network}-allow-https"
   network = "${local.network}"
   project = "${var.project}"
@@ -36,7 +40,12 @@ resource "google_compute_firewall" "allow-http" {
     protocol = "tcp"
     ports    = ["443"]
   }
-    resource "google_compute_firewall" "allow-ssh" {
+
+  target_tags   = ["bigsmart_api_server"]
+  source_ranges = ["0.0.0.0/0"]
+}
+
+resource "google_compute_firewall" "allow-ssh" {
   name    = "${local.network}-allow-ssh"
   network = "${local.network}"
   project = "${var.project}"
