@@ -44,17 +44,3 @@ resource "google_compute_firewall" "allow-https" {
   target_tags   = ["bigsmart_api_server"]
   source_ranges = ["0.0.0.0/0"]
 }
-
-resource "google_compute_firewall" "allow-ssh" {
-  name    = "${local.network}-allow-ssh"
-  network = "${local.network}"
-  project = "${var.project}"
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
-
-  target_tags   = ["bigsmart_api_server"]
-  source_ranges = ["0.0.0.0/0"]
-}
