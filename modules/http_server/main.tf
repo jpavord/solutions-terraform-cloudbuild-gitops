@@ -65,5 +65,5 @@ sudo service nginx restart
   }
 
   # Apply the firewall rule to allow external IPs to access this instance
-  tags = ["bs-api-server"]
+  tags = ["bs-api-server", "http-server", "https-server"]
 }
