@@ -17,7 +17,7 @@ locals {
   network = "${element(split("-", var.subnet), 0)}"
 }
 
-resource "google_compute_instance" "http_server" {
+resource "google_compute_instance" "bigsmart_api_server" {
   project      = "${var.project}"
   zone         = "us-central1-a"
   name         = "${local.network}-bigsmart-api"
