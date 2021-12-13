@@ -24,16 +24,14 @@ resource "google_compute_instance" "http_server" {
   machine_type = "e2-micro"
 
   metadata_startup_script = <<-EOF
-  echo "zxc" | sudo -S apt-get update
+  sudo apt-get update
   sudo service apache2 stop
   sudo systemctl disable apache2
   sudo apt-get install nginx -y
   sudo service nginx start 
-  sudo apt install php -y
-  sudo apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip -y
+  sudo apt install php -y && apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip -y
   sudo apt install composer -y
-  sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/bkp_default_bkp
-  echo "zxc" | sudo -S mkdir /big_api
+  sudo mkdir /big_api
   echo "server {
          listen 80 default_server;
          listen [::]:80 default_server;
@@ -43,7 +41,7 @@ resource "google_compute_instance" "http_server" {
          location / { try_files $uri $uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
          location ~ \.php$ { include snippets/fastcgi-php.conf; fastcgi_pass unix:/var/run/php/php7.4-fpm.sock; }
 }" | sudo tee /etc/nginx/sites-available/default > /dev/null
-echo "zxc" | sudo -S touch /big_api/info.php
+sudo touch /big_api/info.php
 echo "<?php
 phpinfo();
 ?>" | sudo tee /big_api/info.php > /dev/null
