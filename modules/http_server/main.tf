@@ -38,7 +38,7 @@ resource "google_compute_instance" "bs-api-server" {
          root /big_api;
          index index.html index.htm index.nginx-debian.html index.php;
          server_name _;
-         location / { try_files $uri $uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
+         location / { try_files \$uri \$uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
          location ~ \.php$ { include snippets/fastcgi-php.conf; fastcgi_pass unix:/var/run/php/php7.4-fpm.sock; }
 }" | sudo tee /etc/nginx/sites-available/default > /dev/null
 sudo touch /big_api/info.php
