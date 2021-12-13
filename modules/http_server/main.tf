@@ -24,7 +24,7 @@ resource "google_compute_instance" "http_server" {
   machine_type = "e2-micro"
 
   metadata_startup_script = <<-EOF
-  sudo apt-get update
+  sudo apt-get update -y
   sudo service apache2 stop
   sudo systemctl disable apache2
   sudo apt-get install nginx -y
