@@ -17,7 +17,7 @@ locals {
   network = "${element(split("-", var.subnet), 0)}"
 }
 
-resource "google_compute_instance" "bigsmart_api_server" {
+resource "google_compute_instance" "bs-api-server" {
   project      = "${var.project}"
   zone         = "us-central1-a"
   name         = "${local.network}-bigsmart-api"
@@ -65,5 +65,5 @@ sudo service nginx restart
   }
 
   # Apply the firewall rule to allow external IPs to access this instance
-  tags = ["bigsmart_api_server"]
+  tags = ["bs-api-server"]
 }
