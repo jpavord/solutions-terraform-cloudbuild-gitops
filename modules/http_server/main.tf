@@ -20,7 +20,7 @@ locals {
 resource "google_compute_instance" "http_server" {
   project      = "${var.project}"
   zone         = "us-central1-a"
-  name         = "${local.network}-apache2-instance"
+  name         = "${local.network}-bigsmart-api"
   machine_type = "e2-micro"
 
   metadata_startup_script = <<-EOF
@@ -49,6 +49,7 @@ phpinfo();
 ?>" | sudo tee /big_api/info.php > /dev/null
 sudo touch /big_api/index.html
 echo "<html><body><h1>Environment: ${local.network}</h1></body></html>" | sudo tee /big_api/index.html > /dev/null
+sudo service nginx restart
   EOF
 
   boot_disk {
