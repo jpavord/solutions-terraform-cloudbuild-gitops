@@ -35,7 +35,7 @@ resource "google_compute_instance" "http_server" {
   sudo echo "server {
          listen 80 default_server;
          listen [::]:80 default_server;
-         root big_api/public;
+         root /big_api;
          index index.html index.htm index.nginx-debian.html index.php;
          server_name _;
          location / { try_files $uri $uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
