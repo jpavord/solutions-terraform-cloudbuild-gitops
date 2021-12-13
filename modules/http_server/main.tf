@@ -26,7 +26,6 @@ resource "google_compute_instance" "bs-api-server" {
   metadata_startup_script = <<-EOF
   sudo apt-get update -y
   sudo apt-get install nginx -y
-  sudo systemctl stop nginx
   sudo apt-get install php -y && apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip -y
   sudo apt-get install composer -y
   sudo mkdir /big_api
