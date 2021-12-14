@@ -45,36 +45,23 @@ resource "google_compute_instance" "bs-front-server" {
         </VirtualHost>" | sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null
    sudo a2enmod rewrite
    sudo a2enmod headers
-   sudo find /big-admin -type f -exec chmod 644 {} +
-   sudo find /big-admin -type d -exec chmod 755 {} +
    touch /big-admin/.htaccess
    echo "<IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
     </IfModule>
-
     RewriteEngine On
-
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond \%\{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
-
     # Handle Front Controller...
     RewriteCond \%\{REQUEST_FILENAME} !-d
     RewriteCond \%\{REQUEST_FILENAME} !-f
     RewriteRule ^ index.html [L]
-
     # Handle Authorization Header
     RewriteCond \%\{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:\%\{HTTP:Authorization}]
     </IfModule>" | sudo tee /big-admin/.htaccess > /dev/null
-    touch /big-admin/index.html
-    echo '<html><body><h1>Environment: ${local.network}</h1></body></html>' | sudo tee /big-admin/index.html
-    touch /big-admin/info.php
-    echo "<?php
-    phpinfo();
-    ?>" | sudo tee /big-admin/info.php
-    sudo service apache2 restart
   EOF
 
   boot_disk {
