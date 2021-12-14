@@ -34,9 +34,9 @@ output "external_ip" {
 }
 
 output "instance_name_front" {
-  value = "${module.front_server.instance_name}"
+  value = "${module.front_server.instance_name_front}"
 }
 
 output "external_ip_front" {
-  value = "${module.front_server.external_ip}"
+  value = "${module.front_server.external_ip_front}"
 }
