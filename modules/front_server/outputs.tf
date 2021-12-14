@@ -13,10 +13,10 @@
 # limitations under the License.
 
 
-output "instance_name" {
+output "instance_name_front" {
   value = "${google_compute_instance.bs-front-server.name}"
 }
 
-output "external_ip" {
+output "external_ip_front" {
   value = "${google_compute_instance.bs-front-server.network_interface.0.access_config.0.nat_ip}"
 }
