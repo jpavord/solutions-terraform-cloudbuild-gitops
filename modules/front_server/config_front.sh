@@ -19,7 +19,6 @@ echo "<VirtualHost *:80>
         </VirtualHost>" | sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null
 sudo a2enmod rewrite
 sudo a2enmod headers
-touch /big-admin/.htaccess
 echo "<IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews
