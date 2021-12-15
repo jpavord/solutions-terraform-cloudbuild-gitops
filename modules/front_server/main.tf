@@ -24,11 +24,11 @@ resource "google_compute_instance" "bs-front-server" {
   machine_type = "e2-micro"
 
   metadata_startup_script = <<-EOF
-sudo apt-get update -y && sudo apt-get install apache2 -y
+sudo apt update -y && sudo apt install apache2 -y
 sudo  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 source ~/.bashrc
 nvm install v10.20.1
-sudo mkdir /big-admin
+sudo mkdir /big-admin\
 echo "<Directory /big-admin>
         Options Indexes FollowSymLinks
         AllowOverride all
