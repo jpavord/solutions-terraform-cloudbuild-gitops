@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-sudo source ~/.bashrc
-sudo nvm install v10.20.1
+sudo apt-get update -y
+sudo  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+source ~/.bashrc
+nvm install v10.20.1
 sudo mkdir /big-admin
 echo "<Directory /big-admin>
         Options Indexes FollowSymLinks
