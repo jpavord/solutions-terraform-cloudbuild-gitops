@@ -8,7 +8,7 @@ echo "<Directory /big-admin>
         Options Indexes FollowSymLinks
         AllowOverride all
         Require all granted
-        </Directory>" | sudo tee /etc/apache2/apache2.conf > /dev/null
+</Directory>" | sudo tee -a /etc/apache2/apache2.conf > /dev/null
 echo "<VirtualHost *:80>    
         ServerAdmin webmaster@localhost
         DocumentRoot /big-admin
@@ -16,7 +16,7 @@ echo "<VirtualHost *:80>
        
         ErrorLog \$\{APACHE_LOG_DIR}/error.log
         CustomLog \$\{APACHE_LOG_DIR}/access.log combined
-        </VirtualHost>" | sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null
+</VirtualHost>" | sudo tee /etc/apache2/sites-available/000-default.conf > /dev/null
 sudo a2enmod rewrite
 sudo a2enmod headers
 echo "<IfModule mod_rewrite.c>
