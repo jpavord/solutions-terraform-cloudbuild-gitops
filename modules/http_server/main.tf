@@ -42,6 +42,7 @@ resource "google_compute_instance" "bs-api-server" {
          location / { try_files \$uri \$uri/ /index.php?args; add_header 'Access-Control-Allow-Origin' '*'; }
          location ~ \.php$ { include snippets/fastcgi-php.conf; fastcgi_pass unix:/var/run/php/php7.4-fpm.sock; }
 }" | sudo tee /etc/nginx/sites-available/default > /dev/null
+sudo mv /known_hosts ~/.ssh/
 sudo touch /big_api/info.php
 echo "<?php
 phpinfo();
