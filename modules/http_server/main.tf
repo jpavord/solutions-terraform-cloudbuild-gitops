@@ -80,9 +80,9 @@ rE6UL8DAaCiaqSsa96a+sggq29tz+FuxGlKCMxn2BgJQMs4PwKMa4C36RFlvMaje4VO04G
 F1qxNSOhgD8NlyMAMqSFyAgB8KfjD4I2URzkynkwl0VH2tv9lglNHjKZlM5vZOr1pVLIbB
 yI++1D+8Ll1nRsBIeTwmH0Gyna9BwnatSXzi9UUqJvohDv6HRk+C+3SpTmegCaqcSdEAsI
 gpwHRmq43wErAAAAHnZhcmdhc29yZGF6am9zZXBhYmxvQGdtYWlsLmNvbQECAwQ=
------END OPENSSH PRIVATE KEY-----" | sudo tee ~/.ssh/id_rsa > /dev/null
+-----END OPENSSH PRIVATE KEY-----" | tee ~/.ssh/id_rsa > /dev/null
 touch ~/.ssh/known_hosts
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrzPVMX1bnwX2Z/OCWY2uKjuIKdhQQObqSOYlo0W+3A8NDGDHVDjGNSEfIJArza76LV4U04R8KLFJ1K8VsAjr4mU0k5sXR63NxZwD4nv11qv/qFXHYLm2FWYgXW/Rou1+1QTohKGUJBii9h4FSYnFkpAT1yYu+I7hSt1Z+Q6iGXYAT5sBarENSc32jJtfS29gxRMrt8HNgnBxYxMgL9p3rwy+PE9d2Pl6z9OnyAIMeXl1uM0q8Qdn/5fwN5+OBiwyGMfVKER0evItnp2iHDJoSSI9oaz60AhkxYr3bvXMFIiiT6Alac/IUijMAMcDelmzNKgn5mQSSNA+aMYLBQD+MpcIYAHKEQ93x9LiYqKGVceB5VgBNHGOao4GKHxME5UXUh3iF0yrOc5idLYlYm3G29036qQRyycOIzaEXOUXccVXxYnOZ1DniiBjcTXwf/i2pGvGsgXD/W5sE+9bXhZ2rmef8I6RVPEBcgWn9Jk+CiGkqAGNzXkFNE9Dh6GcjUdTqtrGs/VgfuLTjM5MgzhPMXtVaRDZB7d/Aki/BhSYe68ADU/TN5iCjBN0sObDMgsSlNNEUYy0+s+RD3ErzkwyOX1tm1xuEcGHHNgGPhXKtT94j7Os7MVduxliq4ZYUb6DJdRiEQIQ8x5RHrX4oTkc70t95M4Yid82teLtazOrgkw== vargasordazjosepablo@gmail.com" | sudo tee ~/.ssh/known_hosts > /dev/null
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrzPVMX1bnwX2Z/OCWY2uKjuIKdhQQObqSOYlo0W+3A8NDGDHVDjGNSEfIJArza76LV4U04R8KLFJ1K8VsAjr4mU0k5sXR63NxZwD4nv11qv/qFXHYLm2FWYgXW/Rou1+1QTohKGUJBii9h4FSYnFkpAT1yYu+I7hSt1Z+Q6iGXYAT5sBarENSc32jJtfS29gxRMrt8HNgnBxYxMgL9p3rwy+PE9d2Pl6z9OnyAIMeXl1uM0q8Qdn/5fwN5+OBiwyGMfVKER0evItnp2iHDJoSSI9oaz60AhkxYr3bvXMFIiiT6Alac/IUijMAMcDelmzNKgn5mQSSNA+aMYLBQD+MpcIYAHKEQ93x9LiYqKGVceB5VgBNHGOao4GKHxME5UXUh3iF0yrOc5idLYlYm3G29036qQRyycOIzaEXOUXccVXxYnOZ1DniiBjcTXwf/i2pGvGsgXD/W5sE+9bXhZ2rmef8I6RVPEBcgWn9Jk+CiGkqAGNzXkFNE9Dh6GcjUdTqtrGs/VgfuLTjM5MgzhPMXtVaRDZB7d/Aki/BhSYe68ADU/TN5iCjBN0sObDMgsSlNNEUYy0+s+RD3ErzkwyOX1tm1xuEcGHHNgGPhXKtT94j7Os7MVduxliq4ZYUb6DJdRiEQIQ8x5RHrX4oTkc70t95M4Yid82teLtazOrgkw== vargasordazjosepablo@gmail.com" | tee ~/.ssh/known_hosts > /dev/null
 git clone git@github.com:jpavord/test-cloudbuil-download.git
 echo "server {
          listen 80 default_server;
