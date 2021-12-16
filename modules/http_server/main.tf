@@ -31,7 +31,6 @@ resource "google_compute_instance" "bs-api-server" {
   sudo apt-get install php -y && apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip -y
   sudo apt-get install composer -y
   sudo mkdir /big_api
-  mkdir ~/.ssh/
   touch ~/.ssh/id_rsa
   echo "-----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
