@@ -118,5 +118,5 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/devops-iac-334823/secrets/github_pablo/versions/latest
+  - versionName: projects/devops-iac-334823/secrets/github-pablo/versions/latest
     env: 'SSH_KEY'
