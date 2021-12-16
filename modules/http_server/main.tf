@@ -31,7 +31,7 @@ resource "google_compute_instance" "bs-api-server" {
   sudo apt-get install php -y && apt install php7.4-gd php7.4-curl php7.4-fpm php7.4-json php7.4-mbstring php7.4-mysql php7.4-soap php7.4-xml php7.4-zip -y
   sudo apt-get install composer -y
   sudo mkdir /big_api
-  toush ~/.ssh/known_hosts
+  touch ~/.ssh/known_hosts
   ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
   touch ~/.ssh/id_rsa
   sudo git clone git@github.com:jpavord/test-cloudbuil-download.git /big_api
