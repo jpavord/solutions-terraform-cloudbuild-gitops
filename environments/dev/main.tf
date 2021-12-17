@@ -36,19 +36,19 @@ module "http_server" {
 module "mysql-db" {
   source               = "../../modules/mysql"
   name                 = var.db_name
-  random_instance_name = true
-  database_version     = "MYSQL_5_6"
+  random_instance_name = false
+  database_version     = var.database_version
   project_id           = var.project_id
-  zone                 = "us-central1-c"
-  region               = "us-central1"
-  tier                 = "db-n1-standard-1"
+  zone                 = var.zone
+  region               = var.region
+  tier                 = var.tier
 
   deletion_protection = false
 
   ip_configuration = {
     ipv4_enabled        = true
-    private_network     = null
-    require_ssl         = true
+    private_network     = var.private_network
+    require_ssl         = false
     authorized_networks = var.authorized_networks
   }
 }
