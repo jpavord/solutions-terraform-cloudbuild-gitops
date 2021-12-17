@@ -32,6 +32,26 @@ module "http_server" {
   project = "${var.project}"
   subnet  = "${module.vpc.subnet}"
 }
+
+module "mysql-db" {
+  source               = "../../modules/mysql"
+  name                 = var.db_name
+  random_instance_name = true
+  database_version     = "MYSQL_5_6"
+  project_id           = var.project_id
+  zone                 = "us-central1-c"
+  region               = "us-central1"
+  tier                 = "db-n1-standard-1"
+
+  deletion_protection = false
+
+  ip_configuration = {
+    ipv4_enabled        = true
+    private_network     = null
+    require_ssl         = true
+    authorized_networks = var.authorized_networks
+  }
+}
   
 module "front_server" {
   source  = "../../modules/front_server"
