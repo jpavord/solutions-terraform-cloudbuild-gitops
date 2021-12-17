@@ -40,3 +40,19 @@ output "instance_name_front" {
 output "external_ip_front" {
   value = "${module.front_server.external_ip_front}"
 }
+
+output "SQL-instance_name" {
+  value       = "${module.mysql.instance_name}"
+}
+
+output "SQL-instance_ip_address" {
+  value       = "${module.mysql.instance_ip_address}"
+}
+
+output "SQL-private_address" {
+  value       = "${module.mysql.private_address}"
+}
+
+output "SQL-instance_first_ip_address" {
+  value       = "${module.mysql.instance_first_ip_address}"
+}
