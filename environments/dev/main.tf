@@ -35,21 +35,21 @@ module "http_server" {
 
 module "mysql-db" {
   source               = "../../modules/mysql"
-  name                 = var.db_name
+  name                 = "${module.mysql.var.db_name}"
   random_instance_name = false
-  database_version     = var.database_version
-  project_id           = var.project_id
-  zone                 = var.zone
-  region               = var.region
-  tier                 = var.tier
+  database_version     = "${module.mysql.var.database_version}"
+  project_id           = "${module.mysql.var.project_id}"
+  zone                 = "${module.mysql.var.zone}"
+  region               = "${module.mysql.var.region}"
+  tier                 = "${module.mysql.var.tier}"
 
   deletion_protection = false
 
   ip_configuration = {
     ipv4_enabled        = true
-    private_network     = var.private_network
+    private_network     = "${module.mysql.var.private_network}"
     require_ssl         = false
-    authorized_networks = var.authorized_networks
+    authorized_networks = "${module.mysql.var.authorized_networks}"
   }
 }
   
