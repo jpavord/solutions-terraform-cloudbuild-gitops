@@ -33,25 +33,25 @@ module "http_server" {
   subnet  = "${module.vpc.subnet}"
 }
 
-module "mysql-db" {
-  source               = "../../modules/mysql"
-  name                 = var.db_name
-  random_instance_name = false
-  database_version     = var.database_version
-  project_id           = var.project_id
-  zone                 = var.zone
-  region               = var.region
-  tier                 = var.tier
+#module "mysql-db" {
+#  source               = "../../modules/mysql"
+#  name                 = var.db_name
+#  random_instance_name = false
+#  database_version     = var.database_version
+#  project_id           = var.project_id
+#  zone                 = var.zone
+#  region               = var.region
+#  tier                 = var.tier
 
-  deletion_protection = false
+#  deletion_protection = false
 
-  ip_configuration = {
-    ipv4_enabled        = true
-    private_network     = var.private_network
-    require_ssl         = false
-    authorized_networks = var.authorized_networks
-  }
-}
+#  ip_configuration = {
+#    ipv4_enabled        = true
+#    private_network     = var.private_network
+#    require_ssl         = false
+#    authorized_networks = var.authorized_networks
+#  }
+#}
   
 module "front_server" {
   source  = "../../modules/front_server"
