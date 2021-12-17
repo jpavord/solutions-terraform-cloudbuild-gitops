@@ -19,7 +19,7 @@ locals {
 
 resource "google_compute_instance_from_machine_image" "bs-api-server" {
   provider = google-beta
-  name     = "instance-from-machine-image"
+  name     = "${local.network}-bigsmart-api"
   zone     = "us-central1-a"
 
   source_machine_image = "projects/devops-iac-334823/global/machineImages/bigsmart-api"
