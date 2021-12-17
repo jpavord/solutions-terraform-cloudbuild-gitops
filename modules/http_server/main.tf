@@ -17,16 +17,21 @@ locals {
 }
 
 
-resource "google_compute_instance_from_machine_image" "bs-api-server" {
-  provider = google-beta
-  name     = "${local.network}-bigsmart-api"
-  zone     = "us-central1-a"
-
-  source_machine_image = "projects/devops-iac-334823/global/machineImages/bigsmart-api"
+resource "google_compute_instance" "bs-api-server" {
+  project      = "${var.project}"
+  zone         = "us-central1-a"
+  name         = "${local.network}-bigsmart-api"
+  machine_type = "e2-micro"
 
   metadata_startup_script = <<-EOF
   sudo git clone git@github.com:jpavord/test-cloudbuil-download.git /
   EOF
+
+  boot_disk {
+    initialize_params {
+      image = "projects/devops-iac-334823/global/machineImages/bigsmart-api"
+    }
+  }
 
   network_interface {
     subnetwork = "${var.subnet}"
