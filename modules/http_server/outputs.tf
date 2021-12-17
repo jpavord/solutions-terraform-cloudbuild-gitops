@@ -14,9 +14,9 @@
 
 
 output "instance_name" {
-  value = "${google_compute_instance.bs-api-server.name}"
+  value = "${google_compute_instance_from_machine_image.bs-api-server.name}"
 }
 
 output "external_ip" {
-  value = "${google_compute_instance.bs-api-server.network_interface.0.access_config.0.nat_ip}"
+  value = "${google_compute_instance_from_machine_image.bs-api-server.network_interface.0.access_config.0.nat_ip}"
 }
