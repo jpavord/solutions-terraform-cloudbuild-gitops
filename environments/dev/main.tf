@@ -53,6 +53,14 @@ module "sql-db" {
   zone                 = "us-central1-b"
   region               = "us-central1"
   tier                 = "db-g1-small"
+  
+  deletion_protection = false
+
+  ip_configuration = {
+    ipv4_enabled        = true
+    private_network     = null
+    require_ssl         = true
+    authorized_networks = null
 }
 
 module "firewall" {
