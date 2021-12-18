@@ -59,7 +59,7 @@ module "sql-db" {
     ipv4_enabled        = true
     private_network     = null
     require_ssl         = true
-    authorized_networks = null
+    authorized_networks =  var.authorized_networks
   }
 }
 
