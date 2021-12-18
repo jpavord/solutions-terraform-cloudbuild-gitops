@@ -16,21 +16,21 @@
 
 // Master
 output "instance_name" {
-  value       = google_sql_database_instance.default.name
+  value       = google_sql_database_instance.bigsmart-demo.name
   description = "The instance name for the master instance"
 }
 
 output "instance_ip_address" {
-  value       = google_sql_database_instance.default.ip_address
+  value       = google_sql_database_instance.bigsmart-demo.ip_address
   description = "The IPv4 address assigned for the master instance"
 }
 
 output "private_address" {
-  value       = google_sql_database_instance.default.private_ip_address
+  value       = google_sql_database_instance.bigsmart-demo.private_ip_address
   description = "The private IP address assigned for the master instance"
 }
 
 output "instance_first_ip_address" {
-  value       = google_sql_database_instance.default.first_ip_address
+  value       = google_sql_database_instance.bigsmart-demo.first_ip_address
   description = "The first IPv4 address of the addresses assigned for the master instance."
 }

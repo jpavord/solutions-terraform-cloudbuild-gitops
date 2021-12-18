@@ -42,8 +42,10 @@ resource "random_id" "suffix" {
   byte_length = 4
 }
 
-resource "google_sql_database_instance" "default" {
-  provider            = google-beta
+resource "google_sql_database_instance" "bigsmart-demo" {
+  #provider            = google-beta
+  source              = "GoogleCloudPlatform/sql-db/google//modules/mysql"
+  version             = "4.0.0"
   project             = var.project_id
   name                = local.master_instance_name
   database_version    = var.database_version
