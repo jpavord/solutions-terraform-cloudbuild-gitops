@@ -33,26 +33,6 @@ module "http_server" {
   subnet  = "${module.vpc.subnet}"
 }
 
-module "mysql-db" {
-  source               = "../../modules/mysql"
-  name                 = "${module.mysql.db_name}"
-  random_instance_name = false
-  database_version     = "${module.mysql.database_version}"
-  project_id           = "${module.mysql.project_id}"
-  zone                 = "${module.mysql.zone}"
-  region               = "${module.mysql.region}"
-  tier                 = "${module.mysql.tier}"
-
-  deletion_protection = false
-
-  ip_configuration = {
-    ipv4_enabled        = true
-    private_network     = "${module.mysql.private_network}"
-    require_ssl         = false
-    authorized_networks = "${module.mysql.authorized_networks}"
-  }
-}
-  
 module "front_server" {
   source  = "../../modules/front_server"
   project = "${var.project}"
