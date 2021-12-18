@@ -47,9 +47,9 @@ module "mysql-db" {
 
   ip_configuration = {
     ipv4_enabled        = true
-    private_network     = "${module.mysql.var.private_network}"
+    private_network     = "${module.mysql.private_network}"
     require_ssl         = false
-    authorized_networks = "${module.mysql.var.authorized_networks}"
+    authorized_networks = "${module.mysql.authorized_networks}"
   }
 }
   
