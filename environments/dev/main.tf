@@ -39,6 +39,21 @@ module "front_server" {
   subnet  = "${module.vpc.subnet}"
 }
 
+resource "random_id" "name" {
+  byte_length = 2
+}
+
+module "sql-db" {
+  source               = "../../modules/mysql"
+  name                 = var.db_name
+  random_instance_name = true
+  database_version     = "MYSQL_5_7"
+  project_id           = "${var.project}"
+  zone                 = "us-central1-b"
+  region               = "us-central1"
+  tier                 = "db-g1-small"
+}
+
 module "firewall" {
   source  = "../../modules/firewall"
   project = "${var.project}"
