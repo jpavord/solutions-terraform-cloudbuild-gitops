@@ -44,8 +44,9 @@ resource "random_id" "name" {
 }
 
 module "sql-db" {
-  source               = "../../modules/mysql"
-  name                 = var.db_name
+  source  = "GoogleCloudPlatform/sql-db/google//modules/mysql"
+  version = "4.0.0"
+  name                 = "bigsmart-demo"
   random_instance_name = true
   database_version     = "MYSQL_5_7"
   project_id           = "${var.project}"
