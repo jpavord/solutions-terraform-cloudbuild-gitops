@@ -35,13 +35,13 @@ module "http_server" {
 
 module "mysql-db" {
   source               = "../../modules/mysql"
-  name                 = "${module.mysql.var.db_name}"
+  name                 = "${module.mysql.db_name}"
   random_instance_name = false
-  database_version     = "${module.mysql.var.database_version}"
-  project_id           = "${module.mysql.var.project_id}"
-  zone                 = "${module.mysql.var.zone}"
-  region               = "${module.mysql.var.region}"
-  tier                 = "${module.mysql.var.tier}"
+  database_version     = "${module.mysql.database_version}"
+  project_id           = "${module.mysql.project_id}"
+  zone                 = "${module.mysql.zone}"
+  region               = "${module.mysql.region}"
+  tier                 = "${module.mysql.tier}"
 
   deletion_protection = false
 
