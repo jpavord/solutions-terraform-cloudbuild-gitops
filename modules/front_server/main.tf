@@ -22,13 +22,14 @@ resource "google_compute_instance" "bs-front-server" {
   zone         = "us-central1-a"
   name         = "${local.network}-bigsmart-front"
   machine_type = "e2-micro"
+  allow_stopping_for_update = "true"
 
   metadata_startup_script = <<-EOF
   sudo apt update -y && sudo apt remove apache2 -y
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
   source ~/.bashrc
+  reboot
   nvm install v10.20.1
-  
   EOF
 
   boot_disk {

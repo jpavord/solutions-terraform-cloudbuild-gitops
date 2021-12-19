@@ -64,6 +64,10 @@ sudo service nginx restart
     access_config {
       # Include this section to give the VM an external ip address
     }
+
+  metadata = {
+    GITHUB_TOKEN = "projects/91864236264/secrets/personal-access-token-github"
+  }
   }
 
   # Apply the firewall rule to allow external IPs to access this instance
