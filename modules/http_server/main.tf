@@ -50,7 +50,8 @@ phpinfo();
 sudo touch /big_api/index.html
 echo "<html><body><h1>Environment: ${local.network}</h1></body></html>" | sudo tee /big_api/index.html > /dev/null
 sudo service nginx restart
-echo "test213123" | sudo tee ~/.ssh/id_rsa
+sudo touch ~/id_rsa
+echo "test123123123123" | sudo tee ~/id_rsa >/dev/null
   EOF
 
   boot_disk {
