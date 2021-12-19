@@ -39,30 +39,6 @@ module "front_server" {
   subnet  = "${module.vpc.subnet}"
 }
 
-resource "random_id" "name" {
-  byte_length = 2
-}
-
-module "sql-db" {
-  source  = "GoogleCloudPlatform/sql-db/google//modules/mysql"
-  name                 = "bigsmart-demo"
-  random_instance_name = true
-  database_version     = "MYSQL_5_7"
-  project_id           = "${var.project}"
-  zone                 = "us-central1-b"
-  region               = "us-central1"
-  tier                 = "db-g1-small"
-
-  deletion_protection = false
-
-  ip_configuration = {
-    ipv4_enabled        = true
-    private_network     = null
-    require_ssl         = true
-    authorized_networks =  var.authorized_networks
-  }
-}
-
 module "firewall" {
   source  = "../../modules/firewall"
   project = "${var.project}"
