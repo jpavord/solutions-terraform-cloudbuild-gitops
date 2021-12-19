@@ -90,3 +90,17 @@ steps:
         echo "*******************************************************************************"
       fi
 # [END tf-apply]
+
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  secretEnv: ['TOKEN']
+  entrypoint: 'bash'
+  args:
+  - -c
+  - |
+    export GITHUB_TOKEN=$$TOKEN
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/devops-iac-334823/secrets/personal-access-token-github/versions/latest
+    env: 'TOKEN'
