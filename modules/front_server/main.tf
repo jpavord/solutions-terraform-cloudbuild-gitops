@@ -24,8 +24,11 @@ resource "google_compute_instance" "bs-front-server" {
   machine_type = "e2-micro"
 
   metadata_startup_script = <<-EOF
-  sudo mkdir /big-admin
-  sudo apt update -y 
+  sudo apt update -y && sudo apt remove apache2 -y
+  sudo  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+  source ~/.bashrc
+  nvm install v10.20.1
+  
   EOF
 
   boot_disk {
