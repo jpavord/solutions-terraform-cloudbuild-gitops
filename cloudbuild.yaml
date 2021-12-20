@@ -97,10 +97,7 @@ steps:
 
 - id: 'clone repo'
   name: 'gcr.io/cloud-builders/git'
-  volumes:
-  - name: 'repo'
-    path: '/persistent_volume'
   entrypoint: 'bash'
-  args: ['git', 'clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/']
+  args: ['git', 'clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git']
       
   
