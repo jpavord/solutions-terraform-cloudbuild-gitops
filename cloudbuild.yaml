@@ -101,11 +101,6 @@ steps:
   - name: 'repo'
     path: '/persistent_volume'
   entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-#     git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
-      cat token.txt
-
+  args: ['git', 'clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/']
       
   
