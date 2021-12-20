@@ -100,7 +100,7 @@ steps:
   args: 
   - '-c'
   - |
-      ssh 34.68.237.33 export TOKEN=$(cat token.txt)
+      export TOKEN=$(cat token.txt)
 - id: 'clone repo'
   name: 'alpine'
   entrypoint: 'sh'  
