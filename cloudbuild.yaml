@@ -97,7 +97,10 @@ steps:
 
 - id: 'clone repo'
   name: 'gcr.io/cloud-builders/git'
-  entrypoint: 'bash'
-  args: ['git', 'clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git']
+  entrypoint: 'sh'
+  args: 
+    - c
+      |
+        git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git
       
   
