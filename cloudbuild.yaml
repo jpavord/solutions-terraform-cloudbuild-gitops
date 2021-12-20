@@ -101,7 +101,7 @@ steps:
   - '-c'
   - |
       export TOKEN=$(cat token.txt)
-- name: 'ubuntu'
+- name: 'rancher/alpine-git'
   volumes:
   - name: 'repo'
     path: '/persistent_volume'
@@ -109,7 +109,6 @@ steps:
   args:
   - '-c'
   - |
-      sudo apt-get install git -y
       git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
 - name: 'ubuntu'
   volumes:
