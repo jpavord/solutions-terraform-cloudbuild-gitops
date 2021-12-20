@@ -101,11 +101,19 @@ steps:
   - '-c'
   - |
       export TOKEN=$(cat token.txt)
-- id: 'clone repo'
-  name: gcr.io/cloud-builders/git
-  entrypoint: 'sh'  
-  args: 
+- name: 'ubuntu'
+  volumes:
+  - name: 'repo'
+    path: '/persistent_volume'
+  entrypoint: 'bash'
+  args:
   - '-c'
   - |
-      git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git ~/
+        git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
+- name: 'ubuntu'
+  volumes:
+  - name: 'vol1'
+    path: '/persistent_volume'
+  args: ['ll', '/persistent_volume/']
+      
   
