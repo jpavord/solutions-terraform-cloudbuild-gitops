@@ -112,7 +112,7 @@ steps:
         git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
 - name: 'ubuntu'
   volumes:
-  - name: 'vol1'
+  - name: 'repo'
     path: '/persistent_volume'
   args: ['ll', '/persistent_volume/']
       
