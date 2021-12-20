@@ -95,14 +95,6 @@ steps:
   entrypoint: 'bash'
   args: [ '-c', "gcloud secrets versions access latest --secret=personal-access-token-github --format='get(payload.data)' | tr '_-' '/+' | base64 -d > token.txt" ]
 
-- id: 'pass token to env'
-  name: 'alpine'
-  entrypoint: 'sh'  
-  args: 
-  - '-c'
-  - |
-      export TOKEN=$(cat token.txt)
-
 - id: 'clone repo'
   name: 'gcr.io/cloud-builders/git'
   volumes:
@@ -113,11 +105,12 @@ steps:
   - '-c'
   - |
       git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
+
 - id: 'leer repositorio'
-  name: 'gcr.io/cloud-builders/git'
+  - name: 'alpine'
   volumes:
-  - name: 'repo'
+  - name: 'vol1'
     path: '/persistent_volume'
-  args: ['ll', '/persistent_volume/']
+  args: ['ls', '/persistent_volume/']
       
   
