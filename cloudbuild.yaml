@@ -102,7 +102,7 @@ steps:
   - |
       export TOKEN=$(cat token.txt)
 - id: 'clone repo'
-  name: 'alpine'
+  name: gcr.io/cloud-builders/git
   entrypoint: 'sh'  
   args: 
   - '-c'
