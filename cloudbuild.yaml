@@ -109,7 +109,8 @@ steps:
   args:
   - '-c'
   - |
-        git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
+      sudo apt-get install git -y
+      git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
 - name: 'ubuntu'
   volumes:
   - name: 'repo'
