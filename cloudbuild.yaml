@@ -104,6 +104,6 @@ steps:
         git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git 
 
 - id: 'pasar repo a vm'    
-  name: gcr.io/cloud-builders/gcloud'
+  name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args: ['-c', "gcloud compute scp --recurse test-cloudbuil-download dev-bigsmart-api:~  --zone=us-central1-a"]
