@@ -90,3 +90,14 @@ steps:
         echo "*******************************************************************************"
       fi
 # [END tf-apply]
+- id: 'get ssh key'
+  name: gcr.io/cloud-builders/gcloud
+  entrypoint: 'bash'
+  args: [ '-c', "gcloud secrets versions access latest --secret=personal-access-token-github --format='get(payload.data)' | tr '_-' '/+' | base64 -d > token.txt" ]
+- id: 'pass env'
+  name: 'alpine'
+  entrypoint: 'sh'  
+  args: 
+  - '-c'
+  - |
+      TOKEN-GH=$(cat token.txt) && echo -n $$TOKEN-GH
