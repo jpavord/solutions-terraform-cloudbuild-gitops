@@ -99,8 +99,8 @@ steps:
   name: 'gcr.io/cloud-builders/git'
   entrypoint: 'sh'
   args: 
-    - c
-      |
+    - '-c'
+    - |
         git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git
       
   
