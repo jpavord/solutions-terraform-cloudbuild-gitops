@@ -112,7 +112,7 @@ steps:
   args:
   - '-c'
   - |
-      git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
+      git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
 - id: 'leer repositorio'
   name: 'gcr.io/cloud-builders/git'
   volumes:
