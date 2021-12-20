@@ -109,7 +109,7 @@ steps:
 - id: 'leer repositorio'
   - name: 'alpine'
   volumes:
-  - name: 'vol1'
+  - name: 'repo'
     path: '/persistent_volume'
   args: ['ls', '/persistent_volume/']
       
