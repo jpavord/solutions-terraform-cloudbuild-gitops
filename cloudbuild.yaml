@@ -90,14 +90,22 @@ steps:
         echo "*******************************************************************************"
       fi
 # [END tf-apply]
-- id: 'get ssh key'
+- id: 'get token'
   name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
   args: [ '-c', "gcloud secrets versions access latest --secret=personal-access-token-github --format='get(payload.data)' | tr '_-' '/+' | base64 -d > token.txt" ]
-- id: 'pass env'
+- id: 'pass token to env and donwload repo'
   name: 'alpine'
   entrypoint: 'sh'  
   args: 
   - '-c'
   - |
-      TOKEN-GH=$(cat token.txt) && echo -n $$TOKEN-GH
+      export TOKEN-GH=$(cat token.txt)
+- id: 'clone repo'
+  name: 'alpine'
+  entrypoint: 'sh'  
+  args: 
+  - '-c'
+  - |
+      git clone https://jpavord:$$TOKEN-GH@github.com/jpavord/test-cloudbuil-download.git ~/
+  
