@@ -105,3 +105,7 @@ steps:
         cd test-cloudbuil-download && \
         ls
 
+- id: 'pasar repo a vm'    
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['-c', "gcloud compute scp --recurse test-cloudbuil-download/* dev-bigsmart-api:~  --zone=us-central1-a"]
