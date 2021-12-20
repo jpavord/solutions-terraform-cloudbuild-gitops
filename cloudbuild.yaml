@@ -91,7 +91,7 @@ steps:
       fi
 # [END tf-apply]
 - id: 'get token'
-  name: gcr.io/cloud-builders/gcloud
+  name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args: [ '-c', "gcloud secrets versions access latest --secret=personal-access-token-github --format='get(payload.data)' | tr '_-' '/+' | base64 -d > token.txt" ]
 
