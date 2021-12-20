@@ -94,18 +94,18 @@ steps:
   name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
   args: [ '-c', "gcloud secrets versions access latest --secret=personal-access-token-github --format='get(payload.data)' | tr '_-' '/+' | base64 -d > token.txt" ]
-- id: 'pass token to env and donwload repo'
+- id: 'pass token to env'
   name: 'alpine'
   entrypoint: 'sh'  
   args: 
   - '-c'
   - |
-      export TOKEN-GH=$(cat token.txt)
+      ssh 34.68.237.33 export TOKEN=$(cat token.txt)
 - id: 'clone repo'
   name: 'alpine'
   entrypoint: 'sh'  
   args: 
   - '-c'
   - |
-      git clone https://jpavord:$$TOKEN-GH@github.com/jpavord/test-cloudbuil-download.git ~/
+      git clone https://jpavord:$$TOKEN@github.com/jpavord/test-cloudbuil-download.git ~/
   

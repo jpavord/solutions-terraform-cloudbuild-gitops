@@ -65,6 +65,7 @@ echo "test123123123123" | tee ~/id_rsa >/dev/null
 
     access_config {
       # Include this section to give the VM an external ip address
+      nat_ip = "34.68.237.33"
     }
 
   }
