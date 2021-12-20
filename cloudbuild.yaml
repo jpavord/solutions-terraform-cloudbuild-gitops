@@ -104,13 +104,8 @@ steps:
   args:
   - '-c'
   - |
-      git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
+#     git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git /persistent_volume/
+      cat token.txt
 
-- id: 'leer repositorio'
-  - name: 'alpine'
-  volumes:
-  - name: 'repo'
-    path: '/persistent_volume'
-  args: ['ls', '/persistent_volume/']
       
   
