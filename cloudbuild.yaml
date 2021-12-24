@@ -101,6 +101,13 @@ steps:
   args: 
     - '-c'
     - |
-        git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git && \
-        gcloud compute scp --recurse test-cloudbuil-download/* dev-bigsmart-api:/  --zone=us-central1-a
+        git clone https://jpavord:$(cat token.txt)@github.com/jpavord/test-cloudbuil-download.git gs://tranfer-test
+
+- id: 'transfer-repo-from-bucket'
+  name: gcr.io/cloud-builders/gcloud
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+        gsutil cp gs://transfer-test/front_server dev-bigsmart-api:/ --zone=us-central1-a
         
