@@ -110,4 +110,40 @@ steps:
     - '-c'
     - |
         gsutil cp gs://transfer-test/front_server dev-bigsmart-api:/ --zone=us-central1-a
+- id: 'crea-private-ip-range'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+       gcloud compute addresses create sql-ip-privada \
+       --regional \
+       --purpose=VPC_PEERING \
+       --addresses=192.168.0.0 \
+        --prefix-length=16 \
+        --description="rango para conexion privada con base de datos" \
+        --network=$BRANCH_NAME 
+- id: 'crea-conexion-privada-networkingservice'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+        gcloud services vpc-peerings connect \
+        --service=servicenetworking.googleapis.com \
+        --ranges=sql-ip-privada \
+        --network=$BRANCH_NAME \
+        --project=devops-iac-334823
+
+- id: 'crea-conexion-privada-sqlservice'
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+        gcloud services vpc-peerings connect \
+        --service=cloudsql-mysql-googleapis-com \
+        --ranges=sql-ip-privada \
+        --network=$BRANCH_NAME \
+        --project=devops-iac-334823
         
